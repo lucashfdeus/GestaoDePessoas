@@ -169,6 +169,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -236,6 +237,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Clientes\Create.cshtml" />
+    <Content Include="Views\Clientes\Delete.cshtml" />
+    <Content Include="Views\Clientes\Details.cshtml" />
+    <Content Include="Views\Clientes\Edit.cshtml" />
+    <Content Include="Views\Clientes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -252,6 +258,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LH.GestaoDePessoas.Application\LH.GestaoDePessoas.Application.csproj">
+      <Project>{167be2d3-fd3d-4fa2-a763-0d8912c7c331}</Project>
+      <Name>LH.GestaoDePessoas.Application</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

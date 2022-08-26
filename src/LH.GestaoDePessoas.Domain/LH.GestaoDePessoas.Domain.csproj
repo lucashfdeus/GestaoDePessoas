@@ -38,7 +38,10 @@
   <ItemGroup>
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\Endereco.cs" />
+    <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
+    <Compile Include="Interfaces\Repository\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

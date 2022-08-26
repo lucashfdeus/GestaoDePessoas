@@ -1,3 +1,4 @@
+using LH.GestaoDePessoas.Application.AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace LH.GestaoDePessoas.UI.Site
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AutoMapperConfig.RegisterMappings();
         }
     }
 }
