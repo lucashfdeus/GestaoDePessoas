@@ -101,6 +101,12 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
             {
                 return HttpNotFound();
             }
+
+            if(!clienteViewModel.Ativo)
+            {
+                ModelState.AddModelError(string.Empty,"Cliente inativo.");
+                return RedirectToAction("Index");
+            }
             return View(clienteViewModel);
         }
 

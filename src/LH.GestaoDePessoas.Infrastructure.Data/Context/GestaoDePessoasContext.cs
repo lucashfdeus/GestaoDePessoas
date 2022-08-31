@@ -2,6 +2,7 @@
 using LH.GestaoDePessoas.Infrastructure.Data.EntityConfig;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Linq;
 
 namespace LH.GestaoDePessoas.Infrastructure.Data.Context
 {
@@ -37,6 +38,23 @@ namespace LH.GestaoDePessoas.Infrastructure.Data.Context
             modelBuilder.Configurations.Add(new EnderecoConfig());
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        public override int SaveChanges() 
+        {
+            foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("DataCadastro") != null) )
+            {
+                if (entry.State == EntityState.Added) 
+                {
+                    entry.Property("DataCadastro").CurrentValue = System.DateTime.Now;
+                }
+
+                if (entry.State == EntityState.Modified) {
+                    entry.Property("DataCadastro").IsModified = false;
+                }
+            }
+
+            return base.SaveChanges();  
         }
     }
 }

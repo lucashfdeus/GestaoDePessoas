@@ -42,7 +42,7 @@ namespace LH.GestaoDePessoas.Application.ViewModels
         public DateTime DataCadastro { get; set; }
 
         [ScaffoldColumn(false)]
-        public bool Ativo { get; set; }
+        public bool Ativo { get; set; } = true;
 
         //Endereço
         [Key]

@@ -11,6 +11,7 @@ namespace LH.GestaoDePessoas.Domain.Entities
         public Cliente()
         {
             DataCadastro = new DateTime();
+            Enderecos = new List<Endereco>();
         }
 
         //public Cliente()

@@ -23,6 +23,7 @@ namespace LH.GestaoDePessoas.Application
             var endereco = Mapper.Map<Endereco>(clienteEnderecoViewModel);
 
             cliente.Enderecos.Add(endereco);
+            cliente.DataCadastro = DateTime.Now;
             _clienteRepository.Adicionar(cliente);
             return clienteEnderecoViewModel;
         }
