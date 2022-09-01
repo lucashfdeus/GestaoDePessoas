@@ -2,9 +2,19 @@
 using System.Web.Mvc;
 using LH.GestaoDePessoas.Application;
 using LH.GestaoDePessoas.Application.ViewModels;
+using LH.GestaoDePessoas.CrossCutting.MvcFilters;
 
 namespace LH.GestaoDePessoas.UI.Site.Controllers
 {
+    //PermissõesCliente 
+    //CL - Listar Todos
+    //CI - Incluir
+    //CE - Editar
+    //CD - Detalhar
+    //CX - Excluir
+
+    [Authorize]
+    [Route]
     public class ClientesController : Controller
     {
         private readonly ClienteAppService _clienteAppService;
@@ -15,12 +25,16 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
         }
 
         // GET: Clientes
+        [ClaimsAuthorize("PermissoesCliente", "CL")]
+        [Route("listar-clientes")]
         public ActionResult Index()
         {
             return View(_clienteAppService.ObterTodosClientes());
         }
 
         // GET: Clientes/Details/5
+        [ClaimsAuthorize("PermissoesCliente", "CD")]
+        [Route("detalhes-cliente/{id}")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +52,7 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
         }
 
         // GET: Clientes/Create
+        [ClaimsAuthorize("PermissoesCliente", "CI")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +61,7 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
         // POST: Clientes/Create.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ClaimsAuthorize("PermissoesCliente", "CI")]
         public ActionResult Create(ClienteEnderecoViewModel clienteEnderecoViewModel)
         {
             if (ModelState.IsValid)
@@ -58,6 +74,7 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
         }
 
         // GET: Clientes/Edit/5
+        [ClaimsAuthorize("PermissoesCliente", "CE")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,6 +94,7 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
         // POST: Clientes/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ClaimsAuthorize("PermissoesCliente", "CE")]
         public ActionResult Edit(ClienteViewModel clienteViewModel)
         {
             if (ModelState.IsValid)
@@ -88,6 +106,7 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
         }
 
         // GET: Clientes/Delete/5
+        [ClaimsAuthorize("PermissoesCliente", "CX")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,6 +132,7 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
         // POST: Clientes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [ClaimsAuthorize("PermissoesCliente", "CX")]
         public ActionResult DeleteConfirmed(int id)
         {
             _clienteAppService.RemoverCliente(id);

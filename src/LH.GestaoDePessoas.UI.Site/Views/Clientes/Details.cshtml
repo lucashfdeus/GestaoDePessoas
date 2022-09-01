@@ -54,6 +54,7 @@
 <p>
     @* @Html.ActionLink("Edit", "Edit", new { id = Model.ClienteId }) | *@
     @* @Html.ActionLink("Back to List", "Index") *@
+    <a href="@Url.Action("index")" class="button btn btn-danger" style="width: 15%; margin-left: 5px">Cancelar</a>         
     @Html.ActionLink("Editar", "Edit", new {id = Model.ClienteId}, new {@class = "btn btn-warning col-sm-2"})
-    <a href="@Url.Action("index")" class="button btn btn-danger" style="width: 15%; margin-left: 5px">Cancelar</a>
+
 </p>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 
 namespace LH.GestaoDePessoas.Infrastructure.Data.Repository
 {
@@ -26,7 +27,31 @@ namespace LH.GestaoDePessoas.Infrastructure.Data.Repository
 
         public override IEnumerable<Cliente> ObterTodos()
         {
-            return Db.Clientes.OrderBy(c => c.DataCadastro);
+            // return Db.Clientes.OrderBy(c => c.DataCadastro);
+            //usando Dapper.
+
+            var conexao = Db.Database.Connection; //Usando a mesma conecxão do EF.
+            var queryTodosClientes = @"SELECT * FROM CLIENTES";
+
+            return conexao.Query<Cliente>(queryTodosClientes);
+        }
+
+        public override Cliente ObterPorId(int id)
+        {
+            var conexao = Db.Database.Connection; 
+            var queryObterClienteId = @"SELECT * FROM Clientes c " + 
+                                      "LEFT JOIN Enderecos e " +
+                                      "ON c.ClienteId = e.ClienteId " +
+                                      "WHERE c.ClienteId = @sid ";
+
+            var cliente = conexao.Query<Cliente, Endereco, Cliente>(queryObterClienteId,
+                (c, e) =>
+                {
+                    c.Enderecos.Add(e);
+                    return c;
+                }, new {sid = id}, splitOn:"ClienteId, EnderecoId");     
+
+            return cliente.FirstOrDefault();
         }
 
         public override void Remover(int id)

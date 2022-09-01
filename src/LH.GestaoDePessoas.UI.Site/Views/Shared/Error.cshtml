@@ -1,9 +1,11 @@
 ﻿@model System.Web.Mvc.HandleErrorInfo
 
 @{
-    ViewBag.Title = "Error";
+    ViewBag.Title = "Ops!";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<h1 class="text-danger">Ops!...</h1>
+<h2 class="text-danger">Ocorreu um erro, contate um administrador.</h2>
+
+<h2 class="warning">Código do Erro: @TempData["ErrorCode"]</h2>
 

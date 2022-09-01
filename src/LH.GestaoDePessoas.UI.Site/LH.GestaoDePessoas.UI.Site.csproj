@@ -175,6 +175,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PermissionHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -263,6 +264,10 @@
     <ProjectReference Include="..\LH.GestaoDePessoas.Application\LH.GestaoDePessoas.Application.csproj">
       <Project>{167be2d3-fd3d-4fa2-a763-0d8912c7c331}</Project>
       <Name>LH.GestaoDePessoas.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LH.GestaoDePessoas.CrossCutting.MvcFilters\LH.GestaoDePessoas.CrossCutting.MvcFilters.csproj">
+      <Project>{d6e48978-c296-40a0-bdab-3dbb88f1243b}</Project>
+      <Name>LH.GestaoDePessoas.CrossCutting.MvcFilters</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

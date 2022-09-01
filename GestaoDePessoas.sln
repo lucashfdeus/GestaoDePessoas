@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LH.GestaoDePessoas.Infrastr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LH.GestaoDePessoas.Application", "src\LH.GestaoDePessoas.Application\LH.GestaoDePessoas.Application.csproj", "{167BE2D3-FD3D-4FA2-A763-0D8912C7C331}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LH.GestaoDePessoas.CrossCutting.MvcFilters", "src\LH.GestaoDePessoas.CrossCutting.MvcFilters\LH.GestaoDePessoas.CrossCutting.MvcFilters.csproj", "{D6E48978-C296-40A0-BDAB-3DBB88F1243B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{167BE2D3-FD3D-4FA2-A763-0D8912C7C331}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{167BE2D3-FD3D-4FA2-A763-0D8912C7C331}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{167BE2D3-FD3D-4FA2-A763-0D8912C7C331}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6E48978-C296-40A0-BDAB-3DBB88F1243B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6E48978-C296-40A0-BDAB-3DBB88F1243B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6E48978-C296-40A0-BDAB-3DBB88F1243B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6E48978-C296-40A0-BDAB-3DBB88F1243B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +64,7 @@ Global
 		{A8A1A29A-88C3-43EB-8720-DD6604E6535F} = {79E5394D-5E27-4A2C-AC7D-6F3B5805F391}
 		{9BF60F47-2AE7-4F21-9519-1B6AEB4C7435} = {F06EE9C3-F92F-46E4-B5CC-0C967A1E2DBE}
 		{167BE2D3-FD3D-4FA2-A763-0D8912C7C331} = {B354BDA1-7273-49C5-827A-BEFE8FE05913}
+		{D6E48978-C296-40A0-BDAB-3DBB88F1243B} = {5FCAA464-21A5-4BF0-883A-7DE1531682F8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {857024D7-5FA9-4720-947D-D5B3F23602E5}
