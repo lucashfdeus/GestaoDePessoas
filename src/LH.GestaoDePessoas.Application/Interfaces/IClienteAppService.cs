@@ -6,12 +6,13 @@ namespace LH.GestaoDePessoas.Application.Interfaces
 {
     public interface IClienteAppService : IDisposable
     {
-        ClienteEnderecoViewModel AdicionarClienteEndereco(ClienteEnderecoViewModel clienteEnderecoViewModel);
-        ClienteViewModel ObterClientePorId(int id);
-        IEnumerable<ClienteViewModel> ObterTodosClientes();
-        ClienteViewModel ObterClientePorCpf(string cpf);
-        ClienteViewModel ObterClientePorEmail(string email);
-        ClienteViewModel AtualizarCliente(ClienteViewModel clienteViewModel);
-        void RemoverCliente(int id);
+        ClienteEnderecoViewModel Adicionar(ClienteEnderecoViewModel clienteEnderecoViewModel);
+        ClienteViewModel ObterPorId(int id);
+        IEnumerable<ClienteViewModel> ObterTodos();
+        ClienteViewModel ObterPorCpf(string cpf);
+        ClienteViewModel ObterPorEmail(string email);
+        IEnumerable<ClienteViewModel> ObterTodosAtivos();
+        ClienteViewModel Atualizar(ClienteViewModel clienteViewModel);
+        void Remover(int id);
     }
 }

@@ -11,16 +11,16 @@ namespace LH.GestaoDePessoas.Infrastructure.Data.Repository
 {
     public class ClienteRepository : Repository<Cliente>, IClienteRepository
     {
-        public Cliente ObterClientePorCpf(string cpf)
+        public Cliente ObterPorCpf(string cpf)
         {
             return Buscar(c => c.CPF == cpf).FirstOrDefault();
         }
 
-        public Cliente ObterClientePorEmail(string email)
+        public Cliente ObterPorEmail(string email)
         {
             return Buscar(c => c.Email == email).FirstOrDefault();
         }
-        public IEnumerable<Cliente> ObterClientesAtivos()
+        public IEnumerable<Cliente> ObterAtivos()
         {
             return Buscar(c => c.Ativo);
         }

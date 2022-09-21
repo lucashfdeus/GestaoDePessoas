@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Web.Mvc;
 using LH.GestaoDePessoas.Application;
+using LH.GestaoDePessoas.Application.Interfaces;
 using LH.GestaoDePessoas.Application.ViewModels;
 using LH.GestaoDePessoas.CrossCutting.MvcFilters;
 
@@ -17,11 +18,11 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
     [Route]
     public class ClientesController : Controller
     {
-        private readonly ClienteAppService _clienteAppService;
+        private readonly IClienteAppService _clienteAppService;
 
-        public ClientesController()
+        public ClientesController(IClienteAppService clienteAppService)
         {
-            _clienteAppService = new ClienteAppService();
+            _clienteAppService = clienteAppService ;
         }
 
         // GET: Clientes
@@ -29,7 +30,7 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
         [Route("listar-clientes")]
         public ActionResult Index()
         {
-            return View(_clienteAppService.ObterTodosClientes());
+            return View(_clienteAppService.ObterTodos());
         }
 
         // GET: Clientes/Details/5
@@ -42,7 +43,7 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var clienteViewModel = _clienteAppService.ObterClientePorId(id.Value);
+            var clienteViewModel = _clienteAppService.ObterPorId(id.Value);
 
             if (clienteViewModel == null)
             {
@@ -53,6 +54,7 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
 
         // GET: Clientes/Create
         [ClaimsAuthorize("PermissoesCliente", "CI")]
+        [Route("novo-cliente")]
         public ActionResult Create()
         {
             return View();
@@ -62,11 +64,12 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ClaimsAuthorize("PermissoesCliente", "CI")]
+        [Route("novo-cliente")]
         public ActionResult Create(ClienteEnderecoViewModel clienteEnderecoViewModel)
         {
             if (ModelState.IsValid)
             {
-                _clienteAppService.AdicionarClienteEndereco(clienteEnderecoViewModel);
+                _clienteAppService.Adicionar(clienteEnderecoViewModel);
                 return RedirectToAction("Index");
             }
 
@@ -75,6 +78,7 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
 
         // GET: Clientes/Edit/5
         [ClaimsAuthorize("PermissoesCliente", "CE")]
+        [Route("{id:guid}/editar-cliente")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,7 +86,7 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var clienteViewModel = _clienteAppService.ObterClientePorId(id.Value);
+            var clienteViewModel = _clienteAppService.ObterPorId(id.Value);
 
             if (clienteViewModel == null)
             {
@@ -95,11 +99,12 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ClaimsAuthorize("PermissoesCliente", "CE")]
+        [Route("{id:guid}/editar-cliente")]
         public ActionResult Edit(ClienteViewModel clienteViewModel)
         {
             if (ModelState.IsValid)
             {
-                _clienteAppService.AtualizarCliente(clienteViewModel);
+                _clienteAppService.Atualizar(clienteViewModel);
                 return RedirectToAction("Index");
             }
             return View(clienteViewModel);
@@ -114,7 +119,7 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var clienteViewModel = _clienteAppService.ObterClientePorId(id.Value);
+            var clienteViewModel = _clienteAppService.ObterPorId(id.Value);
 
             if (clienteViewModel == null)
             {
@@ -135,7 +140,7 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
         [ClaimsAuthorize("PermissoesCliente", "CX")]
         public ActionResult DeleteConfirmed(int id)
         {
-            _clienteAppService.RemoverCliente(id);
+            _clienteAppService.Remover(id);
             return RedirectToAction("Index");
         }
 

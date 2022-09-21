@@ -2,7 +2,7 @@
 using LH.GestaoDePessoas.Application.Interfaces;
 using LH.GestaoDePessoas.Application.ViewModels;
 using LH.GestaoDePessoas.Domain.Entities;
-using LH.GestaoDePessoas.Infrastructure.Data.Repository;
+using LH.GestaoDePessoas.Domain.Interfaces.Repository;
 using System;
 using System.Collections.Generic;
 
@@ -10,14 +10,14 @@ namespace LH.GestaoDePessoas.Application
 {
     public class ClienteAppService : IClienteAppService
     {
-        private readonly ClienteRepository _clienteRepository;
+        private readonly IClienteRepository _clienteRepository;
 
-        public ClienteAppService()
+        public ClienteAppService(IClienteRepository clienteRepository)
         {
-            _clienteRepository = new ClienteRepository();
+            _clienteRepository = clienteRepository;
         }
 
-        public ClienteEnderecoViewModel AdicionarClienteEndereco(ClienteEnderecoViewModel clienteEnderecoViewModel)
+        public ClienteEnderecoViewModel Adicionar(ClienteEnderecoViewModel clienteEnderecoViewModel)
         {
             var cliente = Mapper.Map<Cliente>(clienteEnderecoViewModel);
             var endereco = Mapper.Map<Endereco>(clienteEnderecoViewModel);
@@ -28,34 +28,39 @@ namespace LH.GestaoDePessoas.Application
             return clienteEnderecoViewModel;
         }
 
-        public ClienteViewModel ObterClientePorId(int id)
+        public ClienteViewModel ObterPorId(int id)
         {
            return Mapper.Map<ClienteViewModel>(_clienteRepository.ObterPorId(id));
         }
 
-        public IEnumerable<ClienteViewModel> ObterTodosClientes()
+        public IEnumerable<ClienteViewModel> ObterTodos()
         {
             return Mapper.Map<IEnumerable<ClienteViewModel>>(_clienteRepository.ObterTodos());
         }
 
-        public ClienteViewModel ObterClientePorCpf(string cpf)
+        public ClienteViewModel ObterPorCpf(string cpf)
         {
-            return Mapper.Map<ClienteViewModel>(_clienteRepository.ObterClientePorCpf(cpf));
+            return Mapper.Map<ClienteViewModel>(_clienteRepository.ObterPorCpf(cpf));
         }
 
-        public ClienteViewModel ObterClientePorEmail(string email)
+        public ClienteViewModel ObterPorEmail(string email)
         {
-            return Mapper.Map<ClienteViewModel>(_clienteRepository.ObterClientePorEmail(email));
+            return Mapper.Map<ClienteViewModel>(_clienteRepository.ObterPorEmail(email));
         }
 
-        public ClienteViewModel AtualizarCliente(ClienteViewModel clienteViewModel)
+        public IEnumerable<ClienteViewModel> ObterTodosAtivos()
+        {
+            return Mapper.Map<IEnumerable<ClienteViewModel>>(_clienteRepository.ObterAtivos());
+        }
+
+        public ClienteViewModel Atualizar(ClienteViewModel clienteViewModel)
         {
             var cliente = Mapper.Map<Cliente>(clienteViewModel);
             _clienteRepository.Atualizar(cliente);
             return clienteViewModel;
         }                     
 
-        public void RemoverCliente(int id)
+        public void Remover(int id)
         {
             _clienteRepository.Remover(id);
         }

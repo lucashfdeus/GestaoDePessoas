@@ -9,8 +9,8 @@ namespace LH.GestaoDePessoas.Domain.Interfaces.Repository
 {
     public interface IClienteRepository : IRepository<Cliente>
     {
-        Cliente ObterClientePorCpf(string cpf);
-        Cliente ObterClientePorEmail(string email);
-        IEnumerable<Cliente> ObterClientesAtivos();
+        Cliente ObterPorCpf(string cpf);
+        Cliente ObterPorEmail(string email);
+        IEnumerable<Cliente> ObterAtivos();
     }
 }
