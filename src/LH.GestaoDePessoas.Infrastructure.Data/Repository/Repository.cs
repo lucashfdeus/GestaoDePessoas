@@ -13,16 +13,15 @@ namespace LH.GestaoDePessoas.Infrastructure.Data.Repository
         protected GestaoDePessoasContext Db;
         protected DbSet<TEntity> DbSet;
 
-        public Repository()
+        public Repository(GestaoDePessoasContext context)
         {
-            Db = new GestaoDePessoasContext();
+            Db = context;
             DbSet = Db.Set<TEntity>();
         }
 
         public virtual TEntity Adicionar(TEntity obj)
         {
             var objReturn = DbSet.Add(obj);
-            SaveChanges();
             return objReturn;
         }
 
@@ -31,7 +30,6 @@ namespace LH.GestaoDePessoas.Infrastructure.Data.Repository
            var entry = Db.Entry(obj);
             DbSet.Attach(obj);
             entry.State = EntityState.Modified;
-            SaveChanges();
             return obj;
         }
 
@@ -65,7 +63,6 @@ namespace LH.GestaoDePessoas.Infrastructure.Data.Repository
         public virtual void Remover(int id)
         {
             DbSet.Remove(DbSet.Find(id));   
-            SaveChanges();
         }
 
         public int SaveChanges()

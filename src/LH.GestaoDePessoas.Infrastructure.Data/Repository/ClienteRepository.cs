@@ -6,11 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
+using LH.GestaoDePessoas.Infrastructure.Data.Context;
 
 namespace LH.GestaoDePessoas.Infrastructure.Data.Repository
 {
     public class ClienteRepository : Repository<Cliente>, IClienteRepository
     {
+        public ClienteRepository(GestaoDePessoasContext context)
+            : base(context)
+        {
+
+        }
+
         public Cliente ObterPorCpf(string cpf)
         {
             return Buscar(c => c.CPF == cpf).FirstOrDefault();

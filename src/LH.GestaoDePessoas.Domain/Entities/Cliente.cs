@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LH.GestaoDePessoas.Domain.Validation.Clientes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -29,5 +30,13 @@ namespace LH.GestaoDePessoas.Domain.Entities
         public DateTime DataCadastro { get; set; }
         public bool Ativo { get; set; }
         public virtual ICollection<Endereco> Enderecos { get; set; }
+
+        public ValidationResult ValidationResult { get; set; }
+        public bool IsValid()
+        {
+            ValidationResult = new ClienteEstaConsistenteValidation().Validate(this);
+            return ValidationResult.IsValid;
+        }
+
     }
 }

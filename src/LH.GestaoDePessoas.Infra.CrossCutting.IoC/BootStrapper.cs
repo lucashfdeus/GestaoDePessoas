@@ -3,13 +3,10 @@ using LH.GestaoDePessoas.Application.Interfaces;
 using LH.GestaoDePessoas.Domain.Interfaces.Repository;
 using LH.GestaoDePessoas.Domain.Interfaces.Services;
 using LH.GestaoDePessoas.Domain.Services;
+using LH.GestaoDePessoas.Infrastructure.Data.Context;
 using LH.GestaoDePessoas.Infrastructure.Data.Repository;
+using LH.GestaoDePessoas.Infrastructure.Data.UnitOfWork;
 using SimpleInjector;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LH.GestaoDePessoas.Infra.CrossCutting.IoC
 {
@@ -29,6 +26,10 @@ namespace LH.GestaoDePessoas.Infra.CrossCutting.IoC
 
             //Data
             container.Register<IClienteRepository, ClienteRepository>(Lifestyle.Scoped);
+            container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
+            container.Register<GestaoDePessoasContext>(Lifestyle.Scoped);
+
+
         }
     }
 }
