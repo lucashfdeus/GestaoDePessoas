@@ -31,12 +31,12 @@ namespace LH.GestaoDePessoas.Domain.Entities
         public bool Ativo { get; set; }
         public virtual ICollection<Endereco> Enderecos { get; set; }
 
-        public ValidationResult ValidationResult { get; set; }
-        public bool IsValid()
-        {
-            ValidationResult = new ClienteEstaConsistenteValidation().Validate(this);
-            return ValidationResult.IsValid;
-        }
+        //public ValidationResult ValidationResult { get; set; }
+        //public bool IsValid()
+        //{
+        //    ValidationResult = new ClienteEstaConsistenteValidation().Validate(this);
+        //    return ValidationResult.IsValid;
+        //}
 
     }
 }
