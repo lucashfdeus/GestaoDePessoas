@@ -28,11 +28,15 @@ namespace LH.GestaoDePessoas.Application
             cliente.Enderecos.Add(endereco);
             cliente.DataCadastro = DateTime.Now;
          
-            _clienteService.Adicionar(cliente);
+            var clienteReturn = _clienteService.Adicionar(cliente);
 
-            Commit();
+            //Verificar se o domínio não criticou nada.
+            if(clienteReturn.ValidationResult.IsValid)
+                Commit();
 
-            return clienteEnderecoViewModel;
+            var clienteMap = Mapper.Map<ClienteEnderecoViewModel>(clienteReturn);
+
+            return clienteMap;
         }
 
         public ClienteViewModel ObterPorId(int id)

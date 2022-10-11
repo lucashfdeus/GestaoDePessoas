@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LH.GestaoDePessoas.Application.ViewModels
 {
@@ -43,6 +39,9 @@ namespace LH.GestaoDePessoas.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public bool Ativo { get; set; } = true;
+
+        [ScaffoldColumn(false)]
+        public DomainValidation.Validation.ValidationResult ValidationResult { get; set; }
 
         //Endereço
         [Key]

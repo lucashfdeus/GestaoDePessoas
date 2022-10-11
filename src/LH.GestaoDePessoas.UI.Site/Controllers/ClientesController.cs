@@ -69,7 +69,17 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
         {
             if (ModelState.IsValid)
             {
-                _clienteAppService.Adicionar(clienteEnderecoViewModel);
+                clienteEnderecoViewModel = _clienteAppService.Adicionar(clienteEnderecoViewModel);
+                if (!clienteEnderecoViewModel.ValidationResult.IsValid)
+                {
+                    foreach (var erro in clienteEnderecoViewModel.ValidationResult.Erros)
+                    {
+                        ModelState.AddModelError(string.Empty, erro.Message);
+                    }
+
+                    return View(clienteEnderecoViewModel);
+                }
+
                 return RedirectToAction("Index");
             }
 

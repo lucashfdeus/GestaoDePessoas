@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ValidationResult = DomainValidation.Validation.ValidationResult;
 
 namespace LH.GestaoDePessoas.Domain.Entities
 {
@@ -31,12 +32,12 @@ namespace LH.GestaoDePessoas.Domain.Entities
         public bool Ativo { get; set; }
         public virtual ICollection<Endereco> Enderecos { get; set; }
 
-        //public ValidationResult ValidationResult { get; set; }
-        //public bool IsValid()
-        //{
-        //    ValidationResult = new ClienteEstaConsistenteValidation().Validate(this);
-        //    return ValidationResult.IsValid;
-        //}
+        public ValidationResult ValidationResult { get; set; }
+        public bool IsValid()
+        {
+            ValidationResult = new ClienteEstaConsistenteValidation().Validate(this);
+            return ValidationResult.IsValid;
+        }
 
     }
 }

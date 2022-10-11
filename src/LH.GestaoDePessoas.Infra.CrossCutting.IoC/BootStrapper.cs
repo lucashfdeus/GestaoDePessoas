@@ -28,8 +28,6 @@ namespace LH.GestaoDePessoas.Infra.CrossCutting.IoC
             container.Register<IClienteRepository, ClienteRepository>(Lifestyle.Scoped);
             container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
             container.Register<GestaoDePessoasContext>(Lifestyle.Scoped);
-
-
         }
     }
 }

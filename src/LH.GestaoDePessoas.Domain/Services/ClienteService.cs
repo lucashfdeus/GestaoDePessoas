@@ -17,6 +17,10 @@ namespace LH.GestaoDePessoas.Domain.Services
 
         public Cliente Adicionar(Cliente cliente)
         {
+            //Validar entidade antes de adicionar, auto validar.
+            if(!cliente.IsValid())
+                return cliente;
+
             return _clienteRepository.Adicionar(cliente);
         }
         public Cliente ObterPorId(int id)

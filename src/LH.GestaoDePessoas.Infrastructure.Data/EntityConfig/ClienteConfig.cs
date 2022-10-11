@@ -34,6 +34,7 @@ namespace LH.GestaoDePessoas.Infrastructure.Data.EntityConfig
             Property(c => c.Ativo)
                 .IsRequired();
 
+            Ignore(c => c.ValidationResult);
 
             ToTable("Clientes");
 
