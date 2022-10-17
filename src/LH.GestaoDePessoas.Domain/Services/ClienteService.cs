@@ -3,6 +3,7 @@ using LH.GestaoDePessoas.Domain.Interfaces.Services;
 using System.Collections.Generic;
 using LH.GestaoDePessoas.Domain.Entities;
 using System;
+using LH.GestaoDePessoas.Domain.Validation.Clientes;
 
 namespace LH.GestaoDePessoas.Domain.Services
 {
@@ -19,6 +20,10 @@ namespace LH.GestaoDePessoas.Domain.Services
         {
             //Validar entidade antes de adicionar, auto validar.
             if(!cliente.IsValid())
+                return cliente;
+
+            cliente.ValidationResult = new ClienteAptoParaCadastroValidation(_clienteRepository).Validate(cliente);
+            if (!cliente.ValidationResult.IsValid)
                 return cliente;
 
             return _clienteRepository.Adicionar(cliente);

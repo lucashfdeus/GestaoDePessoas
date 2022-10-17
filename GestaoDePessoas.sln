@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LH.GestaoDePessoas.CrossCut
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LH.GestaoDePessoas.Infra.CrossCutting.IoC", "src\LH.GestaoDePessoas.Infra.CrossCutting.IoC\LH.GestaoDePessoas.Infra.CrossCutting.IoC.csproj", "{8BBF2CAD-899F-425C-9780-2D912FD6B47A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LH.GestaoDePessoas.Domain.Tests", "tests\LH.GestaoDePessoas.Domain.Tests\LH.GestaoDePessoas.Domain.Tests.csproj", "{4760CD4E-8018-4B52-B4FB-9AEFCE366E7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{8BBF2CAD-899F-425C-9780-2D912FD6B47A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BBF2CAD-899F-425C-9780-2D912FD6B47A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BBF2CAD-899F-425C-9780-2D912FD6B47A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4760CD4E-8018-4B52-B4FB-9AEFCE366E7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4760CD4E-8018-4B52-B4FB-9AEFCE366E7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4760CD4E-8018-4B52-B4FB-9AEFCE366E7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4760CD4E-8018-4B52-B4FB-9AEFCE366E7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +78,7 @@ Global
 		{167BE2D3-FD3D-4FA2-A763-0D8912C7C331} = {B354BDA1-7273-49C5-827A-BEFE8FE05913}
 		{D6E48978-C296-40A0-BDAB-3DBB88F1243B} = {5FCAA464-21A5-4BF0-883A-7DE1531682F8}
 		{8BBF2CAD-899F-425C-9780-2D912FD6B47A} = {5FCAA464-21A5-4BF0-883A-7DE1531682F8}
+		{4760CD4E-8018-4B52-B4FB-9AEFCE366E7C} = {79E5394D-5E27-4A2C-AC7D-6F3B5805F391}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {857024D7-5FA9-4720-947D-D5B3F23602E5}
