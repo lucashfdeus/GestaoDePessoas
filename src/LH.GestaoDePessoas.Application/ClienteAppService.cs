@@ -67,7 +67,9 @@ namespace LH.GestaoDePessoas.Application
         public ClienteViewModel Atualizar(ClienteViewModel clienteViewModel)
         {
             var cliente = Mapper.Map<Cliente>(clienteViewModel);
+
             _clienteService.Atualizar(cliente);
+
             return clienteViewModel;
         }                     
 

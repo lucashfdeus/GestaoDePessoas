@@ -27,9 +27,10 @@ namespace LH.GestaoDePessoas.Infrastructure.Data.Repository
 
         public virtual TEntity Atualizar(TEntity obj)
         {
-           var entry = Db.Entry(obj);
+            var entry = Db.Entry(obj);
             DbSet.Attach(obj);
             entry.State = EntityState.Modified;
+
             return obj;
         }
 

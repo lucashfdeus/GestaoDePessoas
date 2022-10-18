@@ -88,7 +88,7 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
 
         // GET: Clientes/Edit/5
         [ClaimsAuthorize("PermissoesCliente", "CE")]
-        [Route("{id:guid}/editar-cliente")]
+        [Route("{id}/editar-cliente")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -109,7 +109,7 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ClaimsAuthorize("PermissoesCliente", "CE")]
-        [Route("{id:guid}/editar-cliente")]
+        [Route("{id}/editar-cliente")]
         public ActionResult Edit(ClienteViewModel clienteViewModel)
         {
             if (ModelState.IsValid)
@@ -122,6 +122,7 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
 
         // GET: Clientes/Delete/5
         [ClaimsAuthorize("PermissoesCliente", "CX")]
+        [Route("{id}/excluir-cliente")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -145,9 +146,10 @@ namespace LH.GestaoDePessoas.UI.Site.Controllers
         }
 
         // POST: Clientes/Delete/5
+        [ClaimsAuthorize("PermissoesCliente", "CX")]
+        [Route("{id}/excluir-cliente")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [ClaimsAuthorize("PermissoesCliente", "CX")]
         public ActionResult DeleteConfirmed(int id)
         {
             _clienteAppService.Remover(id);
